@@ -5,7 +5,7 @@
   "main": "userLogin.js",
   
    "scripts": {
-    "start": "userLogin.html",
+    "start": "node server.js",
  "test": "mocha --exit --require test-setup.js"
   },
   "author": "",
