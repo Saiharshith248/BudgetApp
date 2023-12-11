@@ -7,7 +7,7 @@ const http = require('http');
 const mysql = require('mysql2');
 const app = express();
 const port = 3000;
-
+require('dotenv').config();
 app.use(bodyParser.json());
 
 // Serve static files (HTML, CSS, JS)
@@ -35,13 +35,18 @@ app.get('/', (req, res) => {
 });
 
 
+const dotenv = require('dotenv');
+dotenv.config({ path: 'database.env' });
+
+// Your MySQL connection code
 const pool = mysql.createPool({
-  host: 'localhost',  
-  user: 'root',
-  password: 'Mittu@248',
-  database: 'Project',
-  port: 3306,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE,
+  port: process.env.DB_PORT,
 });
+
 
 
 app.post('/signupUser', (req, res) => {
